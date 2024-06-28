@@ -1,0 +1,165 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-color: #f0f0f0;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .logo h1 {
+    margin: 0;
+}
+
+header .language-nav ul {
+    list-style-type: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+header .language-nav ul li {
+    margin: 0 10px;
+}
+
+header .language-nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 5px 10px;
+}
+
+header .language-nav ul li a.active {
+    background-color: orange;
+    border-radius: 4px;
+}
+
+.container {
+    display: flex;
+    flex: 1;
+}
+
+.sidebar {
+    background-color: #f4f4f4;
+    width: 250px;
+    padding: 15px;
+    overflow-y: auto;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin: 10px 0;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeIn 0.3s forwards;
+    cursor: pointer;
+}
+
+.sidebar ul li:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.sidebar ul li:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.sidebar ul li:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    color: #333;
+    display: block;
+    padding: 5px 10px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.sidebar ul li a:hover,
+.sidebar ul li a.active {
+    background-color: orange;
+    color: white;
+}
+
+.subtopics {
+    display: none;
+    list-style-type: none;
+    padding-left: 20px;
+}
+
+.subtopics li {
+    margin: 5px 0;
+}
+
+.subtopic-arrow {
+    display: inline-block;
+    margin-left: 5px;
+    transition: transform 0.3s;
+}
+
+.subtopic-arrow.collapsed {
+    transform: rotate(0deg);
+}
+
+.subtopic-arrow.expanded {
+    transform: rotate(180deg);
+}
+
+.content {
+    flex: 1;
+    padding: 20px;
+    background-color: #fff;
+    border-left: 1px solid #ddd;
+}
+
+.content h2 {
+    margin-top: 0;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeContent {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.content-loaded {
+    animation: fadeContent 0.5s;
+}
+
+header .language-nav ul li a:hover,
+header .language-nav ul li a.active {
+    background-color: orange;
+    border-radius: 4px;
+}
+
+.sidebar ul li a:hover,
+.sidebar ul li a.active {
+    background-color: orange;
+    color: white;
+}
