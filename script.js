@@ -13,7 +13,19 @@ const topics = {
             { name: 'Audio and Video', link: 'html-audio-video' }
         ]},
         { name: 'Semantic HTML', link: 'html-semantic' },
-        { name: 'Canvas', link: 'html-canvas' }
+        { name: 'Canvas', link: 'html-canvas' },
+        { name: 'Links', link: 'html-links' },
+        { name: 'Head Elements', link: 'html-head-elements', subtopics: [
+            { name: 'Meta Tags', link: 'html-meta-tags' },
+            { name: 'Link Tags', link: 'html-link-tags' }
+        ]},
+        { name: 'Lists', link: 'html-lists' },
+        { name: 'Iframe', link: 'html-iframe' },
+        { name: 'Input Types', link: 'html-input-types', subtopics: [
+            { name: 'Text Input', link: 'html-text-input' },
+            { name: 'Button Input', link: 'html-button-input' },
+            { name: 'Other Input Types', link: 'html-other-input-types' }
+        ]}
     ],
     css: [
         { name: 'Introduction', link: 'css-introduction' },
@@ -28,7 +40,20 @@ const topics = {
         { name: 'Animations and Transitions', link: 'css-animations' },
         { name: 'Responsive Design', link: 'css-responsive-design' },
         { name: 'CSS Variables', link: 'css-variables' },
-        { name: 'CSS Frameworks', link: 'css-frameworks' }
+        { name: 'CSS Frameworks', link: 'css-frameworks' },
+        { name: 'Positioning', link: 'css-positioning', subtopics: [
+            { name: 'Static Positioning', link: 'css-static-positioning' },
+            { name: 'Relative Positioning', link: 'css-relative-positioning' },
+            { name: 'Absolute Positioning', link: 'css-absolute-positioning' }
+        ]},
+        { name: 'Media Queries', link: 'css-media-queries' },
+        { name: 'Typography', link: 'css-typography', subtopics: [
+            { name: 'Font Properties', link: 'css-font-properties' },
+            { name: 'Text Alignment', link: 'css-text-alignment' },
+            { name: 'Text Decoration', link: 'css-text-decoration' }
+        ]},
+        { name: 'Pseudo-elements', link: 'css-pseudo-elements' },
+        { name: 'Layouts', link: 'css-layouts' }
     ],
     javascript: [
         { name: 'Introduction', link: 'javascript-introduction' },
@@ -44,7 +69,19 @@ const topics = {
         { name: 'Asynchronous JavaScript', link: 'javascript-async' },
         { name: 'ES Modules', link: 'javascript-modules' },
         { name: 'JSON', link: 'javascript-json' },
-        { name: 'Promises', link: 'javascript-promises' }
+        { name: 'Promises', link: 'javascript-promises' },
+        { name: 'Control Flow', link: 'javascript-control-flow', subtopics: [
+            { name: 'If Statements', link: 'javascript-if-statements' },
+            { name: 'Loops', link: 'javascript-loops' },
+            { name: 'Switch Statements', link: 'javascript-switch-statements' }
+        ]},
+        { name: 'Classes', link: 'javascript-classes' },
+        { name: 'Prototypes', link: 'javascript-prototypes', subtopics: [
+            { name: 'Prototype Chain', link: 'javascript-prototype-chain' },
+            { name: 'Inheritance', link: 'javascript-inheritance' }
+        ]},
+        { name: 'Event Loop', link: 'javascript-event-loop' },
+        { name: 'Fetch API', link: 'javascript-fetch-api' }
     ]
 };
 
@@ -141,237 +178,549 @@ const contentData = {
         <h2>HTML Canvas</h2>
         <p>The HTML &lt;canvas&gt; element is used to draw graphics, on the fly, via scripting (usually JavaScript).</p>
         <pre><code class="language-markup">&lt;canvas id="myCanvas" width="200" height="100"&gt;&lt;/canvas&gt;</code></pre>`,
+    'html-links': `
+        <h2>HTML Links</h2>
+        <p>HTML links are defined with the &lt;a&gt; tag.</p>
+        <pre><code class="language-markup">&lt;a href="https://www.example.com"&gt;This is a link&lt;/a&gt;</code></pre>`,
+    'html-head-elements': `
+        <h2>HTML Head Elements</h2>
+        <p>The head element contains meta-information about the HTML document.</p>
+        <pre><code class="language-markup">&lt;head&gt;
+    &lt;title&gt;Page Title&lt;/title&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="description" content="Free Web tutorials"&gt;
+    &lt;meta name="keywords" content="HTML,CSS,JavaScript"&gt;
+    &lt;meta name="author" content="John Doe"&gt;
+&lt;/head&gt;</code></pre>`,
+    'html-meta-tags': `
+        <h2>HTML Meta Tags</h2>
+        <p>Meta tags always go inside the head element, and they provide metadata about the HTML document.</p>
+        <pre><code class="language-markup">&lt;meta charset="UTF-8"&gt;
+&lt;meta name="description" content="Free Web tutorials"&gt;
+&lt;meta name="keywords" content="HTML,CSS,JavaScript"&gt;
+&lt;meta name="author" content="John Doe"&gt;</code></pre>`,
+    'html-link-tags': `
+        <h2>HTML Link Tags</h2>
+        <p>The &lt;link&gt; tag defines a link between a document and an external resource.</p>
+        <pre><code class="language-markup">&lt;link rel="stylesheet" href="styles.css"&gt;</code></pre>`,
+    'html-lists': `
+        <h2>HTML Lists</h2>
+        <p>HTML lists can be ordered (numbered) or unordered (bulleted).</p>
+        <pre><code class="language-markup">&lt;ul&gt;
+    &lt;li&gt;Coffee&lt;/li&gt;
+    &lt;li&gt;Tea&lt;/li&gt;
+    &lt;li&gt;Milk&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+    &lt;li&gt;Coffee&lt;/li&gt;
+    &lt;li&gt;Tea&lt;/li&gt;
+    &lt;li&gt;Milk&lt;/li&gt;
+&lt;/ol&gt;</code></pre>`,
+    'html-iframe': `
+        <h2>HTML Iframe</h2>
+        <p>An HTML iframe is used to display a web page within a web page.</p>
+        <pre><code class="language-markup">&lt;iframe src="https://www.example.com" width="300" height="200"&gt;&lt;/iframe&gt;</code></pre>`,
+    'html-input-types': `
+        <h2>HTML Input Types</h2>
+        <p>HTML supports various input types for form elements.</p>
+        <pre><code class="language-markup">&lt;input type="text" name="username"&gt;
+&lt;input type="password" name="password"&gt;
+&lt;input type="button" value="Click Me"&gt;</code></pre>`,
+    'html-text-input': `
+        <h2>HTML Text Input</h2>
+        <p>Text input fields allow the user to input text data.</p>
+        <pre><code class="language-markup">&lt;input type="text" name="username"&gt;</code></pre>`,
+    'html-button-input': `
+        <h2>HTML Button Input</h2>
+        <p>Button input fields are used to create clickable buttons.</p>
+        <pre><code class="language-markup">&lt;input type="button" value="Click Me"&gt;</code></pre>`,
+    'html-other-input-types': `
+        <h2>Other HTML Input Types</h2>
+        <p>HTML supports a wide range of input types such as email, number, date, etc.</p>
+        <pre><code class="language-markup">&lt;input type="email" name="email"&gt;
+&lt;input type="number" name="quantity"&gt;
+&lt;input type="date" name="bday"&gt;</code></pre>`,
+
+    // CSS Content
     'css-introduction': `
         <h2>CSS Introduction</h2>
-        <p>CSS stands for Cascading Style Sheets. CSS describes how HTML elements are to be displayed on screen, paper, or in other media.</p>
+        <p>CSS is the language we use to style an HTML document. CSS describes how HTML elements should be displayed.</p>
         <pre><code class="language-css">body {
     font-family: Arial, sans-serif;
-}
-
-h1 {
-    color: blue;
-}
-
-p {
-    font-size: 14px;
 }</code></pre>`,
     'css-selectors': `
         <h2>CSS Selectors</h2>
-        <p>CSS selectors are used to "find" (or select) the HTML elements you want to style.</p>
-        <pre><code class="language-css">/* Element selector */
-p {
-    color: red;
+        <p>CSS selectors are used to select the HTML elements you want to style.</p>
+        <pre><code class="language-css">p {
+    color: blue;
 }
 
-/* Class selector */
-.intro {
+#id {
     font-size: 20px;
 }
 
-/* ID selector */
-#main {
-    background-color: yellow;
+.class {
+    margin: 10px;
 }</code></pre>`,
     'css-properties': `
         <h2>CSS Properties</h2>
-        <p>CSS properties are used to apply styles to elements selected by the selectors.</p>
-        <pre><code class="language-css">h1 {
-    color: green;
-    text-align: center;
-}
-
-p {
-    font-family: 'Times New Roman', Times, serif;
-    line-height: 1.5;
-}</code></pre>`,
+        <p>CSS properties are used to apply styles to HTML elements.</p>
+        <pre><code class="language-css">color: red;
+font-size: 16px;
+margin: 0;
+padding: 10px;</code></pre>`,
     'css-text-properties': `
         <h2>CSS Text Properties</h2>
-        <p>CSS text properties allow you to style text within HTML elements.</p>
-        <pre><code class="language-css">p {
-    color: red;
-    font-size: 16px;
-    text-align: justify;
-}</code></pre>`,
+        <p>CSS text properties control the appearance of text in HTML elements.</p>
+        <pre><code class="language-css">color: blue;
+font-size: 18px;
+text-align: center;
+text-decoration: underline;</code></pre>`,
     'css-box-model-properties': `
         <h2>CSS Box Model Properties</h2>
-        <p>The CSS box model is used to define the layout and design of elements.</p>
-        <pre><code class="language-css">div {
-    margin: 10px;
-    padding: 20px;
-    border: 1px solid black;
-}</code></pre>`,
+        <p>The CSS box model is a box that wraps around every HTML element. It consists of margins, borders, padding, and the actual content.</p>
+        <pre><code class="language-css">margin: 10px;
+border: 1px solid black;
+padding: 20px;
+width: 100px;
+height: 100px;</code></pre>`,
     'css-flexbox': `
         <h2>CSS Flexbox</h2>
-        <p>Flexbox is a layout model that allows items to align and distribute space within a container.</p>
+        <p>CSS Flexbox is a layout model that allows you to design a flexible and efficient layout structure.</p>
         <pre><code class="language-css">.container {
     display: flex;
-}
-
-.item {
-    flex: 1;
-    padding: 10px;
+    justify-content: center;
+    align-items: center;
 }</code></pre>`,
     'css-grid': `
         <h2>CSS Grid</h2>
-        <p>CSS Grid Layout is a two-dimensional layout system for the web.</p>
-        <pre><code class="language-css">.container {
+        <p>CSS Grid Layout is a 2-dimensional system, meaning it can handle both columns and rows.</p>
+        <pre><code class="language-css">.grid-container {
     display: grid;
     grid-template-columns: auto auto auto;
-}
-
-.item {
-    padding: 20px;
-    text-align: center;
+    gap: 10px;
 }</code></pre>`,
     'css-advanced-selectors': `
-        <h2>Advanced CSS Selectors</h2>
-        <p>Advanced CSS selectors provide more specific ways to select and style HTML elements.</p>
-        <pre><code class="language-css">/* Attribute selectors */
-input[type="text"] {
-    width: 200px;
+        <h2>CSS Advanced Selectors</h2>
+        <p>Advanced selectors provide more precise ways to target elements for styling.</p>
+        <pre><code class="language-css">div > p {
+    color: red;
 }
 
-/* Pseudo-classes */
-a:hover {
-    color: purple;
+p:first-child {
+    font-weight: bold;
 }</code></pre>`,
     'css-animations': `
         <h2>CSS Animations and Transitions</h2>
-        <p>CSS allows animations and transitions to add dynamic effects to web pages.</p>
-        <pre><code class="language-css">.box {
-    width: 100px;
-    height: 100px;
-    background-color: red;
-    transition: width 2s, height 2s, transform 2s;
+        <p>CSS animations and transitions enable you to create dynamic effects on web pages.</p>
+        <pre><code class="language-css">.animate {
+    transition: all 0.5s ease;
 }
 
-.box:hover {
-    width: 200px;
-    height: 200px;
-    transform: rotate(180deg);
+.animate:hover {
+    transform: scale(1.1);
 }</code></pre>`,
     'css-responsive-design': `
-        <h2>Responsive Web Design</h2>
-        <p>Responsive design ensures a web page looks good on all devices (desktops, tablets, and phones).</p>
-        <pre><code class="language-css">@media screen and (max-width: 600px) {
-    body {
-        font-size: 14px;
+        <h2>CSS Responsive Design</h2>
+        <p>Responsive design ensures that web pages look good on all devices.</p>
+        <pre><code class="language-css">@media (max-width: 600px) {
+    .responsive {
+        font-size: 12px;
     }
 }</code></pre>`,
     'css-variables': `
         <h2>CSS Variables</h2>
-        <p>CSS variables allow for easy reuse of values throughout a stylesheet.</p>
+        <p>CSS variables are entities defined by CSS authors that contain specific values to be reused throughout a document.</p>
         <pre><code class="language-css">:root {
-    --main-color: #336699;
+    --main-color: #06c;
 }
 
-.element {
+p {
     color: var(--main-color);
 }</code></pre>`,
     'css-frameworks': `
         <h2>CSS Frameworks</h2>
-        <p>CSS frameworks provide pre-written, standardized code to help build responsive web pages quickly.</p>
-        <pre><code class="language-css">/* Example using Bootstrap */
-&lt;link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"&gt;</code></pre>`,
-    'javascript-introduction': `
-        <h2>JavaScript Introduction</h2>
-        <p>JavaScript is the programming language of the Web.</p>
-        <pre><code class="language-js">console.log('Hello, world!');</code></pre>`,
-    'javascript-variables': `
-        <h2>JavaScript Variables</h2>
-        <p>Variables are containers for storing data values in JavaScript.</p>
-        <pre><code class="language-js">var name = 'John';
-let age = 30;
-const isStudent = true;
-
-console.log(name, age, isStudent);</code></pre>`,
-    'javascript-functions': `
-        <h2>JavaScript Functions</h2>
-        <p>Functions are blocks of code designed to perform particular tasks.</p>
-        <pre><code class="language-js">function greet(name) {
-    return 'Hello, ' + name;
+        <p>CSS frameworks are pre-prepared libraries that are meant to be used as a foundation for your projects.</p>
+        <pre><code class="language-css">/* Example of using Bootstrap */
+.container {
+    padding: 20px;
+}</code></pre>`,
+    'css-positioning': `
+        <h2>CSS Positioning</h2>
+        <p>CSS positioning properties allow you to position elements in a layout.</p>
+        <pre><code class="language-css">.static {
+    position: static;
 }
 
-console.log(greet('Alice'));</code></pre>`,
+.relative {
+    position: relative;
+    top: 10px;
+    left: 10px;
+}</code></pre>`,
+    'css-static-positioning': `
+        <h2>CSS Static Positioning</h2>
+        <p>Static positioning is the default positioning for HTML elements.</p>
+        <pre><code class="language-css">.static {
+    position: static;
+}</code></pre>`,
+    'css-relative-positioning': `
+        <h2>CSS Relative Positioning</h2>
+        <p>Relative positioning is used to move an element relative to its normal position.</p>
+        <pre><code class="language-css">.relative {
+    position: relative;
+    top: 10px;
+    left: 10px;
+}</code></pre>`,
+    'css-absolute-positioning': `
+        <h2>CSS Absolute Positioning</h2>
+        <p>Absolute positioning is used to place an element exactly where you want it on the page.</p>
+        <pre><code class="language-css">.absolute {
+    position: absolute;
+    top: 20px;
+    left: 30px;
+}</code></pre>`,
+    'css-media-queries': `
+        <h2>CSS Media Queries</h2>
+        <p>CSS media queries are used to apply different styles for different devices or screen sizes.</p>
+        <pre><code class="language-css">@media (max-width: 600px) {
+    .responsive {
+        font-size: 12px;
+    }
+}</code></pre>`,
+    'css-typography': `
+        <h2>CSS Typography</h2>
+        <p>CSS typography refers to the styling and arrangement of text on a web page.</p>
+        <pre><code class="language-css">body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}</code></pre>`,
+    'css-font-properties': `
+        <h2>CSS Font Properties</h2>
+        <p>Font properties control the appearance of text fonts.</p>
+        <pre><code class="language-css">font-family: Arial, sans-serif;
+font-size: 16px;
+font-weight: bold;
+font-style: italic;</code></pre>`,
+    'css-text-alignment': `
+        <h2>CSS Text Alignment</h2>
+        <p>Text alignment properties are used to align text within an element.</p>
+        <pre><code class="language-css">text-align: left;
+text-align: center;
+text-align: right;</code></pre>`,
+    'css-text-decoration': `
+        <h2>CSS Text Decoration</h2>
+        <p>Text decoration properties are used to add decorative elements to text.</p>
+        <pre><code class="language-css">text-decoration: none;
+text-decoration: underline;
+text-decoration: line-through;</code></pre>`,
+    'css-pseudo-elements': `
+        <h2>CSS Pseudo-elements</h2>
+        <p>CSS pseudo-elements are used to style specified parts of an element.</p>
+        <pre><code class="language-css">p::first-line {
+    font-weight: bold;
+}
+
+p::before {
+    content: "Note: ";
+    font-style: italic;
+}</code></pre>`,
+    'css-layouts': `
+        <h2>CSS Layouts</h2>
+        <p>CSS layouts control the arrangement of elements on a web page.</p>
+        <pre><code class="language-css">.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}</code></pre>`,
+    
+    // JavaScript Content
+    'javascript-introduction': `
+        <h2>JavaScript Introduction</h2>
+        <p>JavaScript is a programming language that is commonly used to create interactive effects within web browsers.</p>
+        <pre><code class="language-javascript">console.log('Hello, world!');</code></pre>`,
+    'javascript-variables': `
+        <h2>JavaScript Variables</h2>
+        <p>Variables are containers for storing data values.</p>
+        <pre><code class="language-javascript">var name = 'John';
+let age = 30;
+const PI = 3.14;</code></pre>`,
+    'javascript-functions': `
+        <h2>JavaScript Functions</h2>
+        <p>Functions are blocks of code designed to perform a particular task.</p>
+        <pre><code class="language-javascript">function greet(name) {
+    return 'Hello ' + name;
+}
+
+console.log(greet('World'));</code></pre>`,
     'javascript-function-expressions': `
         <h2>JavaScript Function Expressions</h2>
-        <p>Function expressions allow you to define functions as part of an expression.</p>
-        <pre><code class="language-js">const greet = function(name) {
-    return 'Hello, ' + name;
+        <p>Function expressions are functions stored in a variable.</p>
+        <pre><code class="language-javascript">const greet = function(name) {
+    return 'Hello ' + name;
 };
 
-console.log(greet('Bob'));</code></pre>`,
+console.log(greet('World'));</code></pre>`,
     'javascript-arrow-functions': `
         <h2>JavaScript Arrow Functions</h2>
-        <p>Arrow functions provide a shorthand syntax for defining functions.</p>
-        <pre><code class="language-js">const greet = (name) => 'Hello, ' + name;
+        <p>Arrow functions provide a shorter syntax for writing function expressions.</p>
+        <pre><code class="language-javascript">const greet = (name) => 'Hello ' + name;
 
-console.log(greet('Charlie'));</code></pre>`,
+console.log(greet('World'));</code></pre>`,
     'javascript-events': `
         <h2>JavaScript Events</h2>
-        <p>JavaScript can be used to handle events that occur when a user interacts with the web page.</p>
-        <pre><code class="language-js">document.getElementById('myButton').addEventListener('click', function() {
+        <p>Events are actions that can be detected by JavaScript.</p>
+        <pre><code class="language-javascript">document.getElementById('myButton').addEventListener('click', function() {
     alert('Button clicked!');
 });</code></pre>`,
     'javascript-dom': `
         <h2>JavaScript DOM Manipulation</h2>
-        <p>JavaScript can manipulate the DOM to change the content of a web page.</p>
-        <pre><code class="language-js">document.getElementById('myElement').innerHTML = 'New content';</code></pre>`,
+        <p>The DOM allows JavaScript to interact with and manipulate HTML documents.</p>
+        <pre><code class="language-javascript">document.getElementById('myDiv').innerHTML = 'Hello, DOM!';</code></pre>`,
     'javascript-arrays-objects': `
         <h2>JavaScript Arrays and Objects</h2>
-        <p>Arrays and objects are fundamental data structures in JavaScript for storing and manipulating data.</p>
-        <pre><code class="language-js">const numbers = [1, 2, 3, 4];
-const person = {
-    name: 'Alice',
-    age: 30
-};</code></pre>`,
+        <p>Arrays and objects are used to store collections of data.</p>
+        <pre><code class="language-javascript">let fruits = ['Apple', 'Banana', 'Cherry'];
+let person = { name: 'John', age: 30 };
+
+console.log(fruits[0]);
+console.log(person.name);</code></pre>`,
     'javascript-error-handling': `
-        <h2>Error Handling in JavaScript</h2>
-        <p>Error handling in JavaScript helps manage and deal with unexpected situations.</p>
-        <pre><code class="language-js">try {
+        <h2>JavaScript Error Handling</h2>
+        <p>Error handling in JavaScript is done using try, catch, and finally blocks.</p>
+        <pre><code class="language-javascript">try {
     // Code that may throw an error
-    throw new Error('Something went wrong');
+    let result = someFunction();
 } catch (error) {
-    console.error(error);
+    console.error('An error occurred:', error.message);
+} finally {
+    console.log('This will always execute.');
 }</code></pre>`,
     'javascript-async': `
         <h2>Asynchronous JavaScript</h2>
-        <p>Asynchronous JavaScript allows code to run without blocking other operations.</p>
-        <pre><code class="language-js">async function fetchData() {
-    let response = await fetch('https://api.example.com/data');
-    let data = await response.json();
-    return data;
-}</code></pre>`,
+        <p>Asynchronous JavaScript allows you to programmatically handle tasks that take time to complete.</p>
+        <pre><code class="language-javascript">setTimeout(() => {
+    console.log('This runs after 2 seconds');
+}, 2000);</code></pre>`,
     'javascript-modules': `
-        <h2>JavaScript Modules</h2>
-        <p>ES Modules (ES6 Modules) allow JavaScript code to be split into reusable modules.</p>
-        <pre><code class="language-js">// module.js
-export function greet(name) {
-    return 'Hello, ' + name;
+        <h2>JavaScript ES Modules</h2>
+        <p>ES Modules allow you to import and export code between JavaScript files.</p>
+        <pre><code class="language-javascript">// module.js
+export const PI = 3.14;
+export function add(a, b) {
+    return a + b;
 }
 
 // main.js
-import { greet } from './module.js';
-console.log(greet('David'));</code></pre>`,
+import { PI, add } from './module.js';
+
+console.log(PI);
+console.log(add(2, 3));</code></pre>`,
     'javascript-json': `
-        <h2>JSON in JavaScript</h2>
+        <h2>JavaScript JSON</h2>
         <p>JSON (JavaScript Object Notation) is a lightweight data-interchange format.</p>
-        <pre><code class="language-js">const data = '{"name":"John","age":30}';
-const obj = JSON.parse(data);
-console.log(obj.name);</code></pre>`,
+        <pre><code class="language-javascript">const jsonString = '{"name":"John", "age":30}';
+const jsonObject = JSON.parse(jsonString);
+
+console.log(jsonObject.name); // Output: John</code></pre>`,
     'javascript-promises': `
         <h2>JavaScript Promises</h2>
-        <p>Promises in JavaScript represent the eventual completion or failure of an asynchronous operation.</p>
-        <pre><code class="language-js">const fetchData = new Promise((resolve, reject) => {
-    setTimeout(() => {
-        resolve('Data successfully fetched');
-    }, 2000);
+        <p>Promises are used to handle asynchronous operations in JavaScript.</p>
+        <pre><code class="language-javascript">const myPromise = new Promise((resolve, reject) => {
+    let success = true;
+    if (success) {
+        resolve('Operation was successful.');
+    } else {
+        reject('Operation failed.');
+    }
 });
 
-fetchData.then((result) => {
-    console.log(result);
-});</code></pre>`
+myPromise.then((message) => {
+    console.log(message);
+}).catch((error) => {
+    console.error(error);
+});</code></pre>`,
+    'javascript-control-flow': `
+        <h2>JavaScript Control Flow</h2>
+        <p>Control flow statements control the execution of code in JavaScript.</p>
+        <pre><code class="language-javascript">if (condition) {
+    // Code to execute if condition is true
+} else {
+    // Code to execute if condition is false
+}
+
+for (let i = 0; i < 5; i++) {
+    console.log(i);
+}</code></pre>`,
+    'javascript-if-statements': `
+        <h2>JavaScript If Statements</h2>
+        <p>If statements are used to execute code based on a condition.</p>
+        <pre><code class="language-javascript">if (condition) {
+    // Code to execute if condition is true
+} else {
+    // Code to execute if condition is false
+}</code></pre>`,
+    'javascript-loops': `
+        <h2>JavaScript Loops</h2>
+        <p>Loops are used to repeatedly execute a block of code.</p>
+        <pre><code class="language-javascript">for (let i = 0; i < 5; i++) {
+    console.log(i);
+}
+
+let i = 0;
+while (i < 5) {
+    console.log(i);
+    i++;
+}</code></pre>`,
+    'javascript-switch-statements': `
+        <h2>JavaScript Switch Statements</h2>
+        <p>Switch statements are used to perform different actions based on different conditions.</p>
+        <pre><code class="language-javascript">switch (expression) {
+    case value1:
+        // Code to execute if expression === value1
+        break;
+    case value2:
+        // Code to execute if expression === value2
+        break;
+    default:
+        // Code to execute if expression doesn't match any value
+}</code></pre>`,
+    'javascript-classes': `
+        <h2>JavaScript Classes</h2>
+        <p>Classes are templates for creating objects in JavaScript.</p>
+        <pre><code class="language-javascript">class Person {
+    constructor(name, age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    greet() {
+        console.log('Hello, ' + this.name);
+    }
+}
+
+const john = new Person('John', 30);
+john.greet(); // Output: Hello, John</code></pre>`,
+    'javascript-prototypes': `
+        <h2>JavaScript Prototypes</h2>
+        <p>Prototypes are the mechanism by which JavaScript objects inherit features from one another.</p>
+        <pre><code class="language-javascript">function Person(name, age) {
+    this.name = name;
+    this.age = age;
+}
+
+Person.prototype.greet = function() {
+    console.log('Hello, ' + this.name);
 };
+
+const john = new Person('John', 30);
+john.greet(); // Output: Hello, John</code></pre>`,
+    'javascript-prototype-chain': `
+        <h2>JavaScript Prototype Chain</h2>
+        <p>The prototype chain is used to build new types of objects based on existing ones.</p>
+        <pre><code class="language-javascript">function Person(name, age) {
+    this.name = name;
+    this.age = age;
+}
+
+Person.prototype.greet = function() {
+    console.log('Hello, ' + this.name);
+};
+
+function Student(name, age, grade) {
+    Person.call(this, name, age);
+    this.grade = grade;
+}
+
+Student.prototype = Object.create(Person.prototype);
+Student.prototype.constructor = Student;
+
+const student = new Student('John', 20, 'A');
+student.greet(); // Output: Hello, John</code></pre>`,
+    'javascript-inheritance': `
+        <h2>JavaScript Inheritance</h2>
+        <p>Inheritance is a way to create a new class from an existing class.</p>
+        <pre><code class="language-javascript">class Person {
+    constructor(name, age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    greet() {
+        console.log('Hello, ' + this.name);
+    }
+}
+
+class Student extends Person {
+    constructor(name, age, grade) {
+        super(name, age);
+        this.grade = grade;
+    }
+}
+
+const student = new Student('John', 20, 'A');
+student.greet(); // Output: Hello, John</code></pre>`,
+    'javascript-ajax': `
+        <h2>JavaScript AJAX</h2>
+        <p>AJAX (Asynchronous JavaScript and XML) is a technique for creating fast and dynamic web pages.</p>
+        <pre><code class="language-javascript">const xhr = new XMLHttpRequest();
+xhr.open('GET', 'data.json', true);
+xhr.onreadystatechange = function() {
+    if (xhr.readyState === 4 && xhr.status === 200) {
+        const data = JSON.parse(xhr.responseText);
+        console.log(data);
+    }
+};
+xhr.send();</code></pre>`,
+    'javascript-fetch-api': `
+        <h2>JavaScript Fetch API</h2>
+        <p>The Fetch API provides an interface for fetching resources.</p>
+        <pre><code class="language-javascript">fetch('data.json')
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(error => console.error('Error:', error));</code></pre>`,
+    'javascript-es6': `
+        <h2>JavaScript ES6 Features</h2>
+        <p>ES6 introduced many new features to JavaScript, including let, const, arrow functions, and more.</p>
+        <pre><code class="language-javascript">const PI = 3.14;
+let name = 'John';
+
+const greet = (name) => 'Hello ' + name;
+
+console.log(greet('World'));</code></pre>`,
+    'javascript-bom': `
+        <h2>JavaScript BOM</h2>
+        <p>The Browser Object Model (BOM) allows JavaScript to interact with the browser.</p>
+        <pre><code class="language-javascript">console.log(window.innerWidth);
+console.log(navigator.userAgent);
+window.open('https://example.com');</code></pre>`,
+    'javascript-closure': `
+        <h2>JavaScript Closures</h2>
+        <p>A closure is a function that has access to its own scope, the scope of the outer function, and the global scope.</p>
+        <pre><code class="language-javascript">function outerFunction(outerVariable) {
+    return function innerFunction(innerVariable) {
+        console.log('Outer Variable: ' + outerVariable);
+        console.log('Inner Variable: ' + innerVariable);
+    };
+}
+
+const newFunction = outerFunction('outside');
+newFunction('inside');</code></pre>`,
+    'javascript-scope': `
+        <h2>JavaScript Scope</h2>
+        <p>Scope determines the accessibility of variables and functions at various parts of the code.</p>
+        <pre><code class="language-javascript">let globalVar = 'Global';
+
+function scopeTest() {
+    let localVar = 'Local';
+    console.log(globalVar); // Accessible
+    console.log(localVar);  // Accessible
+}
+
+scopeTest();
+console.log(localVar);  // Error: localVar is not defined</code></pre>`,
+};
+
 function showTopics(language) {
     const sidebar = document.getElementById('sidebar');
     const selectedTopics = topics[language];
